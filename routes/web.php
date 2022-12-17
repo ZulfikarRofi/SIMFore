@@ -14,8 +14,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layout.master');
+    return view('pages.dashboard');
 });
+Route::get('/userdata', function () {
+    return view('pages.userdata');
+});
+Route::get('/productdata', function () {
+    return view('pages.productdata');
+});
+Route::get('/forecastinghw', function () {
+    return view('pages.forecasthw');
+});
+Route::get('/transactiondata', function () {
+    return view('pages.transactiondata');
+});
+Route::get('/login', function () {
+    return view('auth.login');
+});
+
 
 // Route::get('/', function () {
 //     return view('welcome');
