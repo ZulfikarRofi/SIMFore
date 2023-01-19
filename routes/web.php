@@ -28,11 +28,18 @@ Route::get('/forecastinghw', function () {
 Route::get('/transactiondata', function () {
     return view('pages.transactiondata');
 });
+Route::get('/report', function () {
+    return view('pages.reportforecasting');
+});
 Route::get('/login', function () {
     return view('auth.login');
 });
-
-
+Route::get('/createproduct', function () {
+    return view('pages.createobat');
+});
+Route::get('/createtransaction', function () {
+    return view('pages.createtransaction');
+});
 // Route::get('/', function () {
 //     return view('welcome');
 // });

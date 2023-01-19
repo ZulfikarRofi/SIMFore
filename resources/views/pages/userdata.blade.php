@@ -2,7 +2,7 @@
 @section('page', 'User Dashboard')
 @section('content')
 
-<div class="container py-3">
+<div class="card p-5">
     <!-- Active Table -->
     <table class="table" style="width: 100%;">
         <thead>
@@ -35,7 +35,7 @@
         </tbody>
     </table>
     <!-- End Active Table -->
-
 </div>
+
 
 @endsection

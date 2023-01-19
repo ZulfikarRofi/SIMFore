@@ -2,15 +2,18 @@
 @section('page', 'Product Dashboard')
 @section('content')
 
-<div class="container py-3">
+<div class="card p-5">
     <!-- Active Table -->
+    <div class="new-data d-flex justify-content-end mb-3">
+        <a href="/createproduct" class="btn btn-primary">New Data</a>
+    </div>
     <table class="table" style="width: 100%;">
         <thead>
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Name Product</th>
                 <th scope="col">Farmasi</th>
-                <th scope="col">Class</th>
+                <th scope="col">Unit</th>
                 <th scope="col">Selling Price</th>
                 <th scope="col">Buying Price</th>
             </tr>

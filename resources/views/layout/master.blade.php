@@ -311,6 +311,13 @@
                 </a>
             </li>
             <!-- Forecast Holt Winters Page Nav -->
+            <li class="nav-item">
+                <a class="nav-link " href="/report">
+                    <i class="bi bi-graph-up"></i>
+                    <span>Report Forecasting</span>
+                </a>
+            </li>
+            <!-- Forecast Holt Winters Page Nav -->
         </ul>
 
     </aside>
