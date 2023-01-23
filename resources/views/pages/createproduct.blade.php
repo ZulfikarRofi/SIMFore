@@ -12,17 +12,17 @@
             </div>
             <div class="row mb-3">
                 <div class="col-4">
-                    <label for="" class="col-form-label">Farmasi</label>
+                    <label for="" class="col-form-label">Farmation</label>
                     <input type="text" class="form-control">
                 </div>
                 <div class="col-4">
-                    <label for="" class="col-form-label">Golongan</label>
+                    <label for="" class="col-form-label">Class</label>
                     <input type="text" class="form-control">
                 </div>
                 <div class="col-4">
-                    <label for="" class="col-form-label">Satuan</label>
+                    <label for="" class="col-form-label">Unit</label>
                     <select name="" id="" class="form-select">
-                        <option selected>Satuan</option>
+                        <option selected>Unit</option>
                         <option value="ampuls">Ampuls</option>
                         <option value="fls">FLS</option>
                         <option value="pcs">Pcs</option>
@@ -33,11 +33,11 @@
             </div>
             <div class="row mb-3">
                 <div class="col-6">
-                    <label for="" class="col-form-label">Harga Jual</label>
+                    <label for="" class="col-form-label">Selling Price</label>
                     <input type="text" class="form-control" placeholder="" value="">
                 </div>
                 <div class="col-6">
-                    <label for="" class="col-form-label">Harga Beli</label>
+                    <label for="" class="col-form-label">Buying Price</label>
                     <input type="text" class="form-control" placeholder="" value="">
                 </div>
             </div>

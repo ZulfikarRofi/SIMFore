@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Report;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class ReportController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::all();
-        return view('pages/userdata', compact('user'));
+        $report = Report::all();
+        return view('pages.reportforecasting', compact('report'));
     }
 
     /**

@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,30 +19,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('pages.dashboard');
 });
-Route::get('/userdata', function () {
-    return view('pages.userdata');
-});
-Route::get('/productdata', function () {
-    return view('pages.productdata');
-});
+Route::get('/userdata', [UserController::class, 'index']);
+Route::get('/productdata', [ProductController::class, 'index']);
+Route::get('/report', [ReportController::class, 'index']);
 Route::get('/forecastinghw', function () {
     return view('pages.forecasthw');
 });
 Route::get('/transactiondata', function () {
     return view('pages.transactiondata');
 });
-Route::get('/report', function () {
-    return view('pages.reportforecasting');
-});
 Route::get('/login', function () {
     return view('auth.login');
 });
 Route::get('/createproduct', function () {
-    return view('pages.createobat');
+    return view('pages.createproduct');
 });
 Route::get('/createtransaction', function () {
     return view('pages.createtransaction');
 });
-// Route::get('/', function () {
-//     return view('welcome');
-// });

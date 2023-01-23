@@ -4,6 +4,8 @@
 
 <div class="card p-5">
     <!-- Active Table -->
+    @forelse($user as $value)
+    @php($i = 1)
     <table class="table" style="width: 100%;">
         <thead>
             <tr>
@@ -15,25 +17,20 @@
         </thead>
         <tbody>
             <tr>
-                <th scope="row">1</th>
-                <td>Christhoper Colombus</td>
-                <td>christhoper@mail.com</td>
-                <td>Super Admin</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>Napoleon Bonaparte</td>
-                <td>napoleon@mail.com</td>
-                <td>Admin Farmasi</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>Winston Churchill</td>
-                <td>Churchill@mail.com</td>
-                <td>Owner</td>
+                <th scope="row">{{$i++}}</th>
+                <td>{{$value->username}}</td>
+                <td>{{$value->email}}</td>
+                <td>{{$value->level}}</td>
             </tr>
         </tbody>
     </table>
+    @empty
+    <div class="row">
+        <div class="d-flex justify-content-center">
+            <img src="assets/img/no-entry-data.png" alt="Empty" style="width: 50%;">
+        </div>
+    </div>
+    @endforelse
     <!-- End Active Table -->
 </div>
 

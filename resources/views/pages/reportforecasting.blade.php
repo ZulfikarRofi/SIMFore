@@ -5,20 +5,6 @@
 <!-- Reports -->
 <div class="col-12">
     <div class="card">
-        <!--
-        <div class="filter">
-            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                    <h6>Filter</h6>
-                </li>
-
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-            </ul>
-        </div> -->
-
         <div class="card-body">
             <h5 class="card-title">Reports <span>/Today</span></h5>
 
@@ -79,8 +65,42 @@
             </script>
             <!-- End Line Chart -->
 
-        </div>
 
+            <div class="row my-3">
+                <div>
+                    <h5 class="card-title">Result Last Forecasting</h5>
+                </div>
+                <!-- Active Table -->
+                @forelse($report as $value)
+                @php($i = 1)
+                <table class="table" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">User Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Level</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">{{$i++}}</th>
+                            <td>{{$value->username}}</td>
+                            <td>{{$value->email}}</td>
+                            <td>{{$value->level}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                @empty
+                <div class="row">
+                    <div class="d-flex justify-content-center">
+                        <img src="assets/img/no-entry-data.png" alt="Empty" style="width: 50%;">
+                    </div>
+                </div>
+                @endforelse
+                <!-- End Active Table -->
+            </div>
+        </div>
     </div>
 </div><!-- End Reports -->
 
