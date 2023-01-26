@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,9 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        $transaction = Transaction::all();
+        return view('pages.transactiondata', compact('transaction'));
+        print_r($transaction);
     }
 
     /**
@@ -24,7 +27,8 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        $product = Product::all();
+        return view('pages.createtransaction', compact('product'));
     }
 
     /**
@@ -35,7 +39,28 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'product_id' => 'required',
+            'buy' => 'required|numeric',
+            'sell' => 'required|numeric',
+            'first_balance' => 'required|numeric',
+            'last_balance' => 'required|numeric',
+            'total_adjust' => 'required|numeric',
+            'transaction_date' => 'required|date',
+        ]);
+
+        $model = new Transaction();
+        $model->product_id = $request->product_id;
+        $model->buy = $request->buy;
+        $model->sell = $request->sell;
+        $model->first_balance = $request->first_balance;
+        $model->last_balance = $request->last_balance;
+        $model->total_adjust = $request->total_adjust;
+        $model->transaction_date = $request->transaction_date;
+        $model->save();
+        echo ($model);
+
+        return redirect('/transactiondata')->with('success', 'New Transaction Added');
     }
 
     /**

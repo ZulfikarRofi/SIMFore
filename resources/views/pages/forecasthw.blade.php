@@ -24,9 +24,15 @@
             <div class="d-flex justify-content-center" style="width:100%;">
                 <div class="row mb-3" style="width: 100%;">
                     <label class="col-form-label fw-semibold" style="width: 100%;">Select period to forecast </label>
+                    <p class="passive-text" style="font-size: 12px;">rules : the value must be 0 > 1;</p>
                     <div class="col-5">
                         <div class="period d-flex justify-content-between">
-                            <input type="month" class="form-control" id="" name="">
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Select Period</option>
+                                <option value="1">December 2022</option>
+                                <option value="1">November 2022</option>
+                                <option value="1">October 2022</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-2 d-flex justify-content-center">

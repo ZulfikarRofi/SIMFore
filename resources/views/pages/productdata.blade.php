@@ -17,19 +17,26 @@
                 <th scope="col">Class</th>
                 <th scope="col">Selling Price</th>
                 <th scope="col">Buying Price</th>
+                <th scope="col">Action</th>
             </tr>
         </thead>
-        @forelse($product as $value)
         @php($i = 1)
+        @forelse($product as $value)
         <tbody>
             <tr>
-                <th scope="row">{{$i++}}</th>
+                <td>{{$i++}}</td>
                 <td>{{$value->med_name}}</td>
                 <td>{{$value->unit}}</td>
                 <td>{{$value->farmation}}</td>
                 <td>{{$value->class}}</td>
                 <td>{{$value->sell_price}}</td>
                 <td>{{$value->buy_price}}</td>
+                <td>
+                    <div class="d-flex">
+                        <a href="" class="btn btn-success"><i class="bi bi-pencil"></i></a>
+                        <a href="" class="btn btn-danger ms-2"><i class="bi bi-trash"></i></a>
+                    </div>
+                </td>
             </tr>
             @empty
             <div class="row">
