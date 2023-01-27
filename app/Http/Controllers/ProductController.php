@@ -78,9 +78,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        //
+        $model = Product::find($id);
+        return view('pages.editproduct', compact('model'));
     }
 
     /**
@@ -90,9 +91,27 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'med_name' => 'required|string|min:3',
+            'med_id' => 'required|integer|min:1',
+            'farmation' => 'required|string',
+            'class' => 'required|string',
+            'sell_price' => 'required|numeric|min:3',
+            'buy_price' => 'required|numeric|min:3',
+        ]);
+        $model = Product::find($id);
+        $model->med_name = $request->med_name;
+        $model->med_id = $request->med_id;
+        $model->unit = $request->unit;
+        $model->farmation = $request->farmation;
+        $model->class = $request->class;
+        $model->sell_price = $request->sell_price;
+        $model->buy_price = $request->buy_price;
+        $model->save();
+
+        return redirect('/productdata')->with('success', 'The Product Has Been Edited to Database');
     }
 
     /**
@@ -101,8 +120,11 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        //
+        $model = Product::find($id);
+        $model->delete();
+
+        return redirect('/productdata')->with('delete', 'The selected data has been deleted');
     }
 }

@@ -3,6 +3,16 @@
 @section('content')
 
 <div class="card p-5">
+    @if (session('success'))
+    <div class="alert alert-success" role="alert">
+        {{ session('success') }}
+    </div>
+    @endif
+    @if(session('delete'))
+    <div class="alert alert-warning" role="alert">
+        {{ session('delete') }}
+    </div>
+    @endif
     <!-- Active Table -->
     <div class="new-data d-flex justify-content-end mb-3">
         <a href="/createproduct" class="btn btn-primary">New Data</a>
@@ -25,7 +35,7 @@
         <tbody>
             <tr>
                 <td>{{$i++}}</td>
-                <td>{{$value->med_name}}</td>
+                <td>{{$value->med_name}} {{$value->med_id}}</td>
                 <td>{{$value->unit}}</td>
                 <td>{{$value->farmation}}</td>
                 <td>{{$value->class}}</td>
@@ -33,8 +43,33 @@
                 <td>{{$value->buy_price}}</td>
                 <td>
                     <div class="d-flex">
-                        <a href="" class="btn btn-success"><i class="bi bi-pencil"></i></a>
-                        <a href="" class="btn btn-danger ms-2"><i class="bi bi-trash"></i></a>
+                        <a href="/editproduct/{{$value->id}}" class="btn btn-success"><i class="bi bi-pencil"></i></a>
+                        <!-- Vertically centered Delete Modal -->
+                        <button type="button" class="btn btn-danger ms-2" data-bs-toggle="modal" data-bs-target="#Product-{{$value->id}}">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                        <div class="modal fade" id="Product-{{$value->id}}" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <form action="/deleteproduct/{{$value->id}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Vertically Centered</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Confirm Delete this product : {{$value->med_name}} {{$value->med_id}}
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div><!-- End Vertically centered Delete Modal-->
+
                     </div>
                 </td>
             </tr>
