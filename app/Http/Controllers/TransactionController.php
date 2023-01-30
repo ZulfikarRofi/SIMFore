@@ -80,9 +80,11 @@ class TransactionController extends Controller
      * @param  \App\Models\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function edit(Transaction $transaction)
+    public function edit($id)
     {
-        //
+        $product = Product::all();
+        $model = Transaction::find($id);
+        return view('pages.edittransaction', compact('model', 'product'));
     }
 
     /**
@@ -92,9 +94,30 @@ class TransactionController extends Controller
      * @param  \App\Models\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Transaction $transaction)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'product_id' => 'required',
+            'buy' => 'required|numeric',
+            'sell' => 'required|numeric',
+            'first_balance' => 'required|numeric',
+            'last_balance' => 'required|numeric',
+            'total_adjust' => 'required|numeric',
+            'transaction_date' => 'required|date',
+        ]);
+
+        $model = Transaction::find($id);
+        $model->product_id = $request->product_id;
+        $model->buy = $request->buy;
+        $model->sell = $request->sell;
+        $model->first_balance = $request->first_balance;
+        $model->last_balance = $request->last_balance;
+        $model->total_adjust = $request->total_adjust;
+        $model->transaction_date = $request->transaction_date;
+        $model->save();
+        echo ($model);
+
+        return redirect('/transactiondata')->with('success', 'The transaction has been edited');
     }
 
     /**
@@ -103,8 +126,11 @@ class TransactionController extends Controller
      * @param  \App\Models\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Transaction $transaction)
+    public function destroy($id)
     {
-        //
+        $model = Transaction::find($id);
+        $model->delete();
+
+        return redirect('/transactiondata')->with('delete', 'The selected data has been deleted');
     }
 }

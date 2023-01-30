@@ -27,7 +27,8 @@ Route::get('/report', [ReportController::class, 'index']);
 Route::get('/transactiondata', [TransactionController::class, 'index']);
 Route::get('/createtransaction', [TransactionController::class, 'create']);
 Route::get('/createproduct', [ProductController::class, 'create']);
-Route::get('editproduct/{id}', [ProductController::class, 'edit']);
+Route::get('/editproduct/{id}', [ProductController::class, 'edit']);
+Route::get('/edittransaction/{id}', [TransactionController::class, 'edit']);
 
 
 Route::get('/forecastinghw', function () {
@@ -43,6 +44,8 @@ Route::post('/createtransaction', [TransactionController::class, 'store']);
 
 //Routing Patch
 Route::patch('/editproduct/{id}', [ProductController::class, 'update']);
+Route::patch('/edittransaction/{id}', [TransactionController::class, 'update']);
 
 //Routing Delete
 Route::delete('/deleteproduct/{id}', [ProductController::class, 'destroy']);
+Route::delete('/deletetransaction/{id}', [TransactionController::class, 'destroy']);
